@@ -8,7 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * иницилизации ApplicationContext.
  */
 
-public class SpringSipmleApp {
+public class SpringSimpleApp {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext ("applicationContext.xml");
 
