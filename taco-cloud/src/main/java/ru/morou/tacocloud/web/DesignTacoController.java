@@ -20,19 +20,16 @@ import ru.morou.tacocloud.Ingredient;
 import ru.morou.tacocloud.Ingredient.Type;
 
 /**
- * @DesignTacoController - класс отвечает за ингридиенты
+ * @class DesignTacoController - класс отвечает за ингридиенты
  * @Slf4j - которая во время выполнения автоматически генерирует в классе регистратор SLF4J (Simple Logging Facade
  * для Java, https: // www .slf4j.org /).
  * @RequestMapping при применении на уровне класса определяет тип запросов, которые обрабатывает этот контроллер.
  * Спецификация класса @RequestMapping уточняется с помощью аннотации @GetMapping, которая добален к методу
  * showDesignForm (). @GetMapping в паре с классом @RequestMapping указывает, что при получении запроса HTTP GET
  * для / design будет вызываться showDesignForm () для обработки запроса.
- *
  * Обычно @RequestMapping используется только на уровне класса, чтобы указать базовый путь. А для каждого из методов
  * обработчика выполняется через @GetMapping, @PostMapping и т. Д.
- *
- * @showDesignForm() будет обрабатывать запрос. В завершение метод showDesignForm () возвращает «дизайн», который
- * представляет собой логическое имя представления, которое будет использоваться для визуализации модели в браузере.
+ * @PostMapping для обработки запросов POST.
  */
 
 @Slf4j
@@ -41,6 +38,12 @@ import ru.morou.tacocloud.Ingredient.Type;
 public class DesignTacoController {
 
 //end::head[]
+
+    /**
+     * addIngredientsToModel() добавляет начинку
+     * @param model - это объект, который переправляет данные между контроллером и любым представлением, отвечающим
+     *              за рендеринг этих данных.
+     */
 
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
@@ -64,6 +67,14 @@ public class DesignTacoController {
     }
 
     //tag::showDesignForm[]
+
+    /**
+     * howDesignForm() (HTTP-запросы GET) - будет обрабатывать запрос. В завершение метод showDesignForm ()
+     * возвращает «дизайн», который представляет собой логическое имя представления, которое будет использоваться
+     * для визуализации модели в браузере.
+     * @param model - модель с ингридиентами из @method addIngredientsToModel()
+     * @return "design" - это логическое имя представления, которое будет использоваться для визуализации моделив браузере.
+     */
     @GetMapping
     public String showDesignForm(Model model) {
         model.addAttribute("design", new Taco());
@@ -87,6 +98,22 @@ public class DesignTacoController {
  */
 
     //tag::processDesignValidated[]
+
+    /**
+     * processDesign() (POST requests) - метод отвечает за обработку заявок на проектирование тако
+     * Когда форма отправляется, поля формы связываются со свойствами объекта Taco (class Taco), который передается
+     * в качестве параметра в processDesign ()
+     * @param design - это логическое имя представления, которое будет использоваться для визуализации модели в браузере.
+     * @param errors -
+     * @param model - это объект, который переправляет данные между контроллером и любым представлением,
+     *              отвечающим за рендеринг этих данных.
+     * @return "redirect:/orders/current" - префикс «redirect:», указывает на то, что это представление с
+     *              перенаправлением. Более конкретно, это указывает, что после завершения processDesign () браузер
+     *              пользователя должен быть перенаправлен на относительный путь / порядок / текущий. Идея заключается
+     *              в том, что после создания тако пользователь будет перенаправлен на форму заказа, из
+     *              которой он может разместить заказ на доставку своих созданий тако.
+     */
+
     @PostMapping
     public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
         if (errors.hasErrors()) {
@@ -101,8 +128,13 @@ public class DesignTacoController {
     }
 
 //end::processDesignValidated[]
-
     //tag::filterByType[]
+    /**
+     * filterByType() - метод отвечает за группировку данных
+     * @param ingredients - сам ингредиент
+     * @param type - тип ингредиента
+     * @return
+     */
     private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
         return ingredients
                 .stream()

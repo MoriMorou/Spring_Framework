@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * Аннотация @SpringBootApplication ясно показывает, что это приложение Spring Boot.
  * @SpringBootApplication - составное приложение, которое объединяет три другие аннотации:
- * @SpringBootConfiguration - обозначает этот класс как класс конфигурации.
- * @EnableAutoConfiguration - включает автоматическую настройку Spring Boot.
- * @ComponentScan - включает сканирование компонентов. Это позволяет вам объявить другие
+ *  @SpringBootConfiguration - обозначает этот класс как класс конфигурации.
+ *  @EnableAutoConfiguration - включает автоматическую настройку Spring Boot.
+ *  @ComponentScan - включает сканирование компонентов. Это позволяет вам объявить другие
  * классы с аннотациями
+ *
+ * @author Mori Morou
  */
 
 @SpringBootApplication   // <1>
