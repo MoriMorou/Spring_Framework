@@ -9,10 +9,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     /**
-     * Метод addViewControllers () получает ViewControllerRegistry, который можно использовать для регистрации одного или нескольких контроллеров представления.
-     * @param registry
+     * Метод addViewControllers () получает ViewControllerRegistry, который можно использовать для регистрации одного
+     * или нескольких контроллеров представления.
      */
+    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("Home");
     }
+
 }

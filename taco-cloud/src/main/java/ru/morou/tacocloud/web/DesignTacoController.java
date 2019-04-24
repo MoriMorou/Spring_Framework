@@ -1,12 +1,12 @@
 package ru.morou.tacocloud.web;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import ru.morou.tacocloud.Order;
 import ru.morou.tacocloud.Taco;
 import ru.morou.tacocloud.Ingredient;
 import ru.morou.tacocloud.Ingredient.Type;
+import ru.morou.tacocloud.data.IngredientRepository;
+import ru.morou.tacocloud.data.TacoRepository;
 
 /**
  * @class DesignTacoController - класс отвечает за ингридиенты
@@ -32,44 +36,37 @@ import ru.morou.tacocloud.Ingredient.Type;
  * @PostMapping для обработки запросов POST.
  */
 
-@Slf4j
 @Controller
 @RequestMapping("/design")
+@SessionAttributes("order")
 public class DesignTacoController {
 
-//end::head[]
+    private final IngredientRepository ingredientRepo;
 
-    /**
-     * addIngredientsToModel() добавляет начинку
-     * @param model - это объект, который переправляет данные между контроллером и любым представлением, отвечающим
-     *              за рендеринг этих данных.
-     */
+    private TacoRepository tacoRepo;
 
-    @ModelAttribute
-    public void addIngredientsToModel(Model model) {
-        List<Ingredient> ingredients = Arrays.asList(
-                new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
-                new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
-                new Ingredient("GRBF", "Ground Beef", Type.PROTEIN),
-                new Ingredient("CARN", "Carnitas", Type.PROTEIN),
-                new Ingredient("TMTO", "Diced Tomatoes", Type.VEGGIES),
-                new Ingredient("LETC", "Lettuce", Type.VEGGIES),
-                new Ingredient("CHED", "Cheddar", Type.CHEESE),
-                new Ingredient("JACK", "Monterrey Jack", Type.CHEESE),
-                new Ingredient("SLSA", "Salsa", Type.SAUCE),
-                new Ingredient("SRCR", "Sour Cream", Type.SAUCE)
-        );
 
-        Type[] types = Ingredient.Type.values();
-        for (Type type : types) {
-            model.addAttribute(type.toString().toLowerCase(), filterByType(ingredients, type));
-        }
+    @Autowired
+    public DesignTacoController(
+            IngredientRepository ingredientRepo,
+            TacoRepository tacoRepo) {
+        this.ingredientRepo = ingredientRepo;
+        this.tacoRepo = tacoRepo;
     }
 
-    //tag::showDesignForm[]
+    @ModelAttribute(name = "order")
+    public Order order() {
+        return new Order();
+    }
+
+    @ModelAttribute(name = "design")
+    public Taco design() {
+        return new Taco();
+    }
+
 
     /**
-     * howDesignForm() (HTTP-запросы GET) - будет обрабатывать запрос. В завершение метод showDesignForm ()
+     * showDesignForm() (HTTP-запросы GET) - будет обрабатывать запрос. В завершение метод showDesignForm ()
      * возвращает «дизайн», который представляет собой логическое имя представления, которое будет использоваться
      * для визуализации модели в браузере.
      * @param model - модель с ингридиентами из @method addIngredientsToModel()
@@ -77,27 +74,16 @@ public class DesignTacoController {
      */
     @GetMapping
     public String showDesignForm(Model model) {
-        model.addAttribute("design", new Taco());
+        List<Ingredient> ingredients = new ArrayList<>();
+        ingredientRepo.findAll().forEach(i -> ingredients.add(i));
+
+        Type[] types = Ingredient.Type.values();
+        for (Type type : types) {
+            model.addAttribute(type.toString().toLowerCase(),
+                    filterByType(ingredients, type));
+        }
         return "design";
     }
-
-//end::showDesignForm[]
-
-/*
-//tag::processDesign[]
-  @PostMapping
-  public String processDesign(Design design) {
-    // Save the taco design...
-    // We'll do this in chapter 3
-    log.info("Processing design: " + design);
-
-    return "redirect:/orders/current";
-  }
-
-//end::processDesign[]
- */
-
-    //tag::processDesignValidated[]
 
     /**
      * processDesign() (POST requests) - метод отвечает за обработку заявок на проектирование тако
@@ -105,11 +91,7 @@ public class DesignTacoController {
      * в качестве параметра в processDesign ()
      * Аннотация @Valid указывает Spring MVC выполнить проверку отправленного объекта Taco после его привязки к
      * отправленным данным формы и до вызова метода processDesign ().
-     *
-     * @param design - это логическое имя представления, которое будет использоваться для визуализации модели в браузере.
      * @param errors -
-     * @param model - это объект, который переправляет данные между контроллером и любым представлением,
-     *              отвечающим за рендеринг этих данных.
      * @return "redirect:/orders/current" - префикс «redirect:», указывает на то, что это представление с
      *              перенаправлением. Более конкретно, это указывает, что после завершения processDesign () браузер
      *              пользователя должен быть перенаправлен на относительный путь / порядок / текущий. Идея заключается
@@ -117,39 +99,26 @@ public class DesignTacoController {
      *              которой он может разместить заказ на доставку своих созданий тако.
      */
     @PostMapping
-    public String processDesign(@Valid @ModelAttribute("design") Taco design, Errors errors, Model model) {
-        // Первые несколько строк
-        //of processDesign () обращается к объекту Errors, спрашивая его метод hasErrors (), если есть какие-либо
-        // ошибки проверки. Если таковые имеются, метод завершается без обработки Taco и возвращает имя представления
-        // «design», чтобы форма снова отображалась.
+    public String processDesign(
+            @Valid Taco taco, Errors errors,
+            @ModelAttribute Order order) {
+
         if (errors.hasErrors()) {
             return "design";
         }
 
-        // Save the taco design...
-        // We'll do this in chapter 3
-        log.info("Processing design: " + design);
+        Taco saved = tacoRepo.save(taco);
+        order.addDesign(saved);
 
         return "redirect:/orders/current";
     }
 
-//end::processDesignValidated[]
-    //tag::filterByType[]
-    /**
-     * filterByType() - метод отвечает за группировку данных
-     * @param ingredients - сам ингредиент
-     * @param type - тип ингредиента
-     * @return
-     */
-    private List<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
+    private List<Ingredient> filterByType(
+            List<Ingredient> ingredients, Type type) {
         return ingredients
                 .stream()
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
     }
-    //end::filterByType[]
-
-// tag::foot[]
 }
-// end::foot[]
 
