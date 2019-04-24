@@ -37,10 +37,15 @@ public class Order {
     private String zip;
     //end::allButValidation[]
 
-    @NotBlank(message="Not a valid credit card number")
+    /**
+     * аннотацией @CreditCardNumber. В этой аннотации указывается, что значением свойства должен быть действительный
+     * номер кредитной карты, который проходит проверку алгоритма Луна (https://en.wikipedia.org/wiki/Luhn_algorithm).
+     */
+    @CreditCardNumber(message="Not a valid credit card number")
     //tag::allButValidation[]
     private String ccNumber;
     //end::allButValidation[]
+
 
     @Pattern(regexp="^(0[1-9]|1[0-2])([\\/])([1-9][0-9])$",
             message="Must be formatted MM/YY")
@@ -48,6 +53,7 @@ public class Order {
     private String ccExpiration;
     //end::allButValidation[]
 
+    // аннотация @Digits гарантирует то, что значение содержит ровно три цифры
     @Digits(integer=3, fraction=0, message="Invalid CVV")
     //tag::allButValidation[]
     private String ccCVV;

@@ -48,4 +48,6 @@ public class HomePageBrowserTest {
     String imgSrc = browser.findElementByTagName("img").getAttribute("src");
     Assert.assertEquals(homePage + "/images/TacoCloud.png", imgSrc);
   }
+
+  
 }

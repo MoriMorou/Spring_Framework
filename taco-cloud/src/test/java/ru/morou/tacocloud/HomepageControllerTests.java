@@ -18,7 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
  */
 
 @RunWith (SpringRunner.class)
-@WebMvcTest(HomeController.class)
+//@WebMvcTest(HomeController.class)
 public class HomepageControllerTests {
 
 // Injects MockMvc - чтобы выполнить HTTP-запрос GET для / (корневой путь).
