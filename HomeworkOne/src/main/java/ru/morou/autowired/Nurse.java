@@ -1,16 +1,26 @@
-package ru.morou.autowired;
-
-public class Nurse {
-
-    /**
-     * Метод запрашивает в регистратуре нужного доктора
-     * @return registry
-     */
-    public Registry getRegistry() {
-        System.out.println("Hello, I need a doctor");
-        CentralRegistry registry = new CentralRegistry();
-        Doctor doctor1 = new Therapist();
-        registry.setDoctors(doctor1);
-        return registry;
-    }
-}
+//package ru.morou.autowired;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Component;
+//
+//@Component("nurse")
+//public class Nurse {
+//
+//    private String patienName;
+//
+//    public Nurse(String name) {
+//        this.patienName = name;
+//    }
+//
+//    public String getPatienName() {
+//        return patienName;
+//    }
+//
+//    @Autowired(required = false)
+//    public void setPatienName(String name) {
+//        System.out.println("Your name please");
+//        this.patienName = name;
+//    }
+//
+//
+//}

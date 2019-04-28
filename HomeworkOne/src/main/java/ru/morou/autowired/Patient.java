@@ -15,7 +15,7 @@ public class Patient {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         System.out.println("Hello, I need a doctor");
-        Registry registry = context.getBean("registryMain", Registry.class);
+        Registry registry = context.getBean("registry", Registry.class);
         registry.findDoctor();
     }
 }
