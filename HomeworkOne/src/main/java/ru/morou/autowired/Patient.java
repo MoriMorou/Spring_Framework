@@ -1,11 +1,8 @@
-package ru.morou.Classic;
+package ru.morou.autowired;
 
-/**
- * 1 Создать модель Пациент - поликлиника (используя Spring)
- * 2 Использовать 3 варианта: xml, javaConfig, autowired.
- *
- * @author asatyukova (Mori Morou)
- */
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 public class Patient {
 
     /**
@@ -16,8 +13,9 @@ public class Patient {
      * @param args
      */
     public static void main(String[] args) {
-        Nurse nurse = new Nurse();
-        Registry registry = nurse.getRegistry();
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        System.out.println("Hello, I need a doctor");
+        Registry registry = context.getBean("registryMain", Registry.class);
         registry.findDoctor();
     }
 }
