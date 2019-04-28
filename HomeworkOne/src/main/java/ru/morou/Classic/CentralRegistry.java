@@ -13,7 +13,6 @@ public class CentralRegistry implements Registry {
 
     @Override
     public void findDoctor() {
-        System.out.println("Hello, I need a doctor");
         doctor.patientAdmission();
     }
 }
