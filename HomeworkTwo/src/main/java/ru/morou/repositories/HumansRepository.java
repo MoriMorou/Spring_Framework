@@ -12,14 +12,11 @@ import java.util.function.Consumer;
  */
 
 @Component
-public class HumansRepository
-{
+public class HumansRepository {
     private Human root;
 
-    private void add(Human human, Human parent)
-    {
-        if(parent == null)
-        {
+    private void add(Human human, Human parent) {
+        if(parent == null) {
             root = human;
             return;
         }
@@ -29,28 +26,23 @@ public class HumansRepository
         foundParent.getChildren().add(human);
     }
 
-    private static Human find(Human startFrom, Human whom)
-    {
-        if(startFrom.equals(whom)) return startFrom;
-        for(Human child: startFrom.getChildren())
-        {
-            Human match = find(child, whom);
+    private static Human find(Human humanForm, Human human) {
+        if(humanForm.equals(human)) return humanForm;
+        for(Human child: humanForm.getChildren()) {
+            Human match = find(child, human);
             if(match != null) return match;
         }
 
         return null;
     }
 
-    public Human find(Human whom)
-    {
-        return find(root, whom);
+    public Human find(Human human) {
+        return find(root, human);
     }
 
-    private static void forEach(Human startFrom, Consumer<Human> consumer)
-    {
-        consumer.accept(startFrom);
-        for(Human child: startFrom.getChildren())
-        {
+    private static void forEach(Human humanForm, Consumer<Human> consumer) {
+        consumer.accept(humanForm);
+        for(Human child: humanForm.getChildren()) {
             forEach(child, consumer);
         }
     }
@@ -90,14 +82,21 @@ public class HumansRepository
         h5.setSex("Female");
         h5.setEducation("University");
 
+        Human h6 = new Human();
+        h6.setFirstName("Alina");
+        h6.setLastName("Lorte");
+        h6.setSex("Female");
+        h6.setEducation("University");
+
         add(h1, null);
-        add(h2, h1);
+        add(h2, null);
         add(h3, h1);
-        add(h4, h2);
-        add(h5, h2);
+        add(h4, h3);
+        add(h5, h4);
+        add(h6, null);
     }
 
-    public String getInfo(final Human human) {
+    public String getData(final Human human) {
         return find(human).toString();
     }
 

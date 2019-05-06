@@ -1,14 +1,16 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 
 <html>
 <body>
-<h1>Input data</h1>
-<br>
-A:
-<br>
-B:
-<br>
+<%--@elvariable id="SumOfNumbers" type="SumOfNumbers"--%>
+<form:form action="processForm" modelAttribute="SumOfNumbers">
+    First Name: <form:input path="A: " />
+    <br>
+    Last Name: <form:input path="B: " />
+    <br>
+    <input type="submit" value="Submit" />
+</form:form>
 </body>
 </html>

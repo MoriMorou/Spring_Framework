@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<form:form action="processForm" modelAttribute="humans">
+<form:form action="processForm" modelAttribute="humen">
     First Name: <form:input path="firstName" />
     <br>
     Last Name: <form:input path="lastName" />
