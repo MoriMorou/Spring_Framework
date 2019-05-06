@@ -10,9 +10,9 @@ First name: ${human.firstName}
 <br>
 Last name: ${human.lastName}
 <br>
-Country: ${human.sex}
+Sex: ${human.sex}
 <br>
-Programming Languages:
+Education:
 <br>
 <ul>
     <c:forEach var="item" items="${human.education}">

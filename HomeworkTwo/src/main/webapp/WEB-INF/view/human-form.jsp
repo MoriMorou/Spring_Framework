@@ -12,7 +12,7 @@
     <br>
     Sex:
     <form:select path="sex">
-        <form:option value="Man" label="Man" />
+        <form:option value="Male" label="Male" />
         <form:option value="Female" label="Female" />
     </form:select>
     <br>

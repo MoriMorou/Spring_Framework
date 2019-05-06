@@ -1,40 +1,52 @@
 package ru.morou.entites;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.function.BiFunction;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Human {
+
     private String firstName;
     private String lastName;
     private String sex;
-    private String[] education;
+    private String education;
 
-    public String getFirstName() {
-        return firstName;
+    @Override
+    public boolean equals(final Object other) {
+
+        if(other == this) return true;
+        if(!(other instanceof Human)) return false;
+        final Human otherHuman = (Human) other;
+
+        BiFunction<Object, Object, Boolean> function = (Object object1, Object object2) -> {
+            if(object1 == null && object2 == null) return true;
+            if(object1 == null && object2 != null) return false;
+            return object1.equals(object2);
+        };
+
+        boolean result = true;
+        result = result && function.apply(this.firstName, otherHuman.firstName);
+        result = result && function.apply(this.lastName, otherHuman.lastName);
+
+        return result;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    @Override
+    public int hashCode() {
+        String name;
+        if(firstName == null)
+            name = "";
+        else
+            name = firstName;
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String[] getEducation() {
-        return education;
-    }
-
-    public void setEducation(String[] education) {
-        this.education = education;
+        name += lastName;
+        return name.hashCode();
     }
 }

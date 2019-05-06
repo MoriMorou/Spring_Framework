@@ -15,10 +15,10 @@ public class HumansService {
         this.humansRepository = humansRepository;
     }
 
-    public Human getHumanByID(int id){
-        Human human = humansRepository.findOneByID(id);
-        return human;
-    }
+//    public Human getHumanByID(int id){
+//        Human human = humansRepository.findOneByID(id);
+//        return human;
+//    }
     public HumansService() {
 
     }

@@ -4,6 +4,7 @@
 
 <html>
 <body>
+<%--@elvariable id="SumOfNumbers" type="SumOfNumbers"--%>
 <form:form action="processForm" modelAttribute="SumOfNumbers">
     First Name: <form:input path="A: " />
     <br>
