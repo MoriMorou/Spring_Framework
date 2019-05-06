@@ -5,7 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.BiFunction;
+
+/**
+ * https://www.boraji.com/index.php/java-8-bifunction-interface-example
+ */
 
 @Getter
 @Setter
@@ -13,6 +19,8 @@ import java.util.function.BiFunction;
 @AllArgsConstructor
 public class Human {
 
+    private Human parent;
+    private List<Human> children = new ArrayList<>();
     private String firstName;
     private String lastName;
     private String sex;
@@ -49,4 +57,5 @@ public class Human {
         name += lastName;
         return name.hashCode();
     }
+
 }

@@ -4,7 +4,7 @@
 
 <html>
 <body>
-<h1>Student Form Result</h1>
+<h1>Human Form Result</h1>
 <br>
 First name: ${human.firstName}
 <br>

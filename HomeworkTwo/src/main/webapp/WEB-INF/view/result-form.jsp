@@ -6,7 +6,7 @@
 <body>
 <h1>Result</h1>
 <br>
-${sa} + ${sb} = ${sa + sb}
+${A} + ${B} = ${A + B}
 <br>
 </body>
 </html>
