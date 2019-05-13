@@ -13,7 +13,6 @@ public class Main {
                 .addAnnotatedClass(Student.class)
                 .addAnnotatedClass(Course.class)
                 .buildSessionFactory();
-
         Session session = null;
 
         Scanner in = new Scanner(System.in);
@@ -22,6 +21,7 @@ public class Main {
             session = factory.getCurrentSession();
             session.beginTransaction();
             String msg = in.nextLine();
+            System.out.println ("hi");
             if (msg.startsWith(Command.STUDENTS_COURSES.getText())) {
                 String stud = msg.substring(Command.STUDENTS_COURSES.getText().length() + 1);
                 int stud_id = Integer.parseInt(stud);

@@ -26,9 +26,9 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
 
-    @OneToMany(mappedBy = "students")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    private List<StudentsCourses> marks;
+//    @OneToMany(mappedBy = "students")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    private List<StudentsCourses> marks;
 
     private List<Course> courseList;
 
@@ -36,13 +36,13 @@ public class Student {
         return id;
     }
 
-    public List<StudentsCourses> getMarks() {
-        return marks;
-    }
-
-    public void setMarks(List<StudentsCourses> marks) {
-        this.marks = marks;
-    }
+//    public List<StudentsCourses> getMarks() {
+//        return marks;
+//    }
+//
+//    public void setMarks(List<StudentsCourses> marks) {
+//        this.marks = marks;
+//    }
 
     public void setId(int id) {
         this.id = id;
