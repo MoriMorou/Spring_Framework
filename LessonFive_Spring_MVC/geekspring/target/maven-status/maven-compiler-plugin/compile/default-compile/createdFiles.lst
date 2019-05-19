@@ -1,0 +1,7 @@
+com\geekbrains\controllers\StudentsController.class
+com\geekbrains\controllers\MainController.class
+com\geekbrains\services\StudentsService.class
+com\geekbrains\launcher\Launcher.class
+com\geekbrains\entities\Student.class
+com\geekbrains\repositories\StudentsRepository.class
+com\geekbrains\entities\Course.class

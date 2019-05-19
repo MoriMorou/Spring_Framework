@@ -16,7 +16,6 @@ import ru.morou.tacocloud.Ingredient;
  * - Сохранить объект ингредиент
  */
 
-public interface IngredientRepository
-        extends CrudRepository<Ingredient, String> {
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 
 }
