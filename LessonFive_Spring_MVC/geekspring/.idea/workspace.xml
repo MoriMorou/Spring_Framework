@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6db148df-b98d-4790-9283-71b389c7be53" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/MainApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/controllers/BookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/controllers/ListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/entities/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/repositories/BookRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/java/ru/morou/services/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/webapp/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/webapp/resources/templates/element-view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../HomeworkFive/src/main/webapp/resources/templates/list-view.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6db148df-b98d-4790-9283-71b389c7be53" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -338,7 +325,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558352740405" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558353274656" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
