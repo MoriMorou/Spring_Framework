@@ -1,12 +1,12 @@
 package ru.morou.tacocloud.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
@@ -32,29 +32,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                // Вызов authorizeRequests () возвращает объект (ExpressionInterceptUrlRegis- метра), для которого вы
-                // можете указать пути и шаблоны URL, а также требования безопасности для этих путей.
-                .authorizeRequests()
-                .antMatchers("/design", "/orders")
-                // Запросы на / design и / orders должны быть для пользователей с предоставленными полномочиями ROLE_USER.
-                .access("hasRole('ROLE_USER')")
-                // Все запросы должны быть разрешены для всех пользователей.
-                .antMatchers("/", "/**").access("permitAll")
+            // Вызов authorizeRequests () возвращает объект (ExpressionInterceptUrlRegis- try), для которого вы
+            // можете указать пути и шаблоны URL, а также требования безопасности для этих путей.
+            .authorizeRequests()
+            .antMatchers("/design", "/orders")
+            // Запросы на / design и / orders должны быть для пользователей с предоставленными полномочиями ROLE_USER.
+            .access("hasRole('ROLE_USER')")
+            // Все запросы должны быть разрешены для всех пользователей.
+            .antMatchers("/", "/**").access("permitAll")
 
-
-                .and()
+            // Переход к форме login
+            .and()
                 .formLogin()
-                .loginPage("/login")
-                .and()
+                    .loginPage("/login")
+
+            .and()
                 .logout()
-                .logoutSuccessUrl("/")
-                .and()
+                    .logoutSuccessUrl("/")
+
+            // Make H2-Console non-secured; for debug purpose
+            .and()
                 .csrf()
-                .ignoringAntMatchers("/h2-console/**")
-                .and()
+                    .ignoringAntMatchers("/h2-console/**")
+
+             // Allow pages to be loaded in frames from the same origin; needed for H2-Console
+            .and()
                 .headers()
-                .frameOptions()
-                .sameOrigin();
+                    .frameOptions()
+                        .sameOrigin();
     }
 
     /**
@@ -77,8 +82,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      * @throws Exception
      */
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception { auth
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
             .userDetailsService(userDetailsService)
             .passwordEncoder(encoder());
     }

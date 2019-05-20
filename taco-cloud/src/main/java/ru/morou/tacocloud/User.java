@@ -15,6 +15,11 @@ import javax.persistence.Id;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * UserDetails from Spring Security.
+ *
+ */
+
 @Entity
 @Data
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
@@ -38,12 +43,12 @@ public class User implements UserDetails {
 
 
     /**
-     * Метод getAuthorities () должен возвращать набор полномочий, предоставленных пользователю.
+     * getAuthorities() должен возвращать набор полномочий, предоставленных пользователю.
      * @return
      */
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList (new SimpleGrantedAuthority ("ROLE_USER"));
+        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

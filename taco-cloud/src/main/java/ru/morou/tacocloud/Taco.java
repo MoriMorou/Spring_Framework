@@ -18,11 +18,10 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 /**
- * Поскольку вы полагаетесь на базу данных для автоматического создания значения идентификатора, вы также аннотируете
+ * Поскольку мы полагаетесь на базу данных для автоматического создания значения идентификатора, мы также аннотируем
  * свойство id с помощью @GeneratedValue, определяя стратегию AUTO.
  */
 
-// FIXME: 2019-04-25 добавить комментарий со странице 78
 @Data
 @Entity
 public class Taco {
@@ -39,8 +38,11 @@ public class Taco {
 
     @ManyToMany(targetEntity=Ingredient.class)
     @Size(min=1, message="You must choose at least 1 ingredient")
-    private List<Ingredient> ingredients = new ArrayList<>();
+    private List<Ingredient> ingredients;
 
+    /**
+     * @PrePersist - аннотация необходима для отражения времени заказа
+     */
     @PrePersist
     void createdAt() {
         this.createdAt = new Date();

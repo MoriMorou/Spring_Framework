@@ -17,7 +17,7 @@ import ru.morou.tacocloud.Ingredient.Type;
  *
  * @author Mori Morou
  */
-
+// FIXME: 2019-05-21 страница 108
 @SpringBootApplication
 public class TacoCloudApplication {
 

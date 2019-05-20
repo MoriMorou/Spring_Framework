@@ -20,5 +20,4 @@ public class RegistrationForm {
         username, passwordEncoder.encode(password), 
         fullname, street, city, state, zip, phone);
   }
-  
 }
