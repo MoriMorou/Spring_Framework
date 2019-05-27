@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
-    // https://getbootstrap.com/docs/4.1/getting-started/introduction/csrf
+    // https://getbootstrap.com
 
     @RequestMapping("/")
     public String showHomePage() {
