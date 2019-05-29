@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 
+/**
+ * @RequestMapping - общий запрос по классу
+ * @GetMapping - уточняющий запрос
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
