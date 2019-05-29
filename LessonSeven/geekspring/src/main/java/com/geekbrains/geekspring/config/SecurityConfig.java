@@ -16,6 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
+/**
+ * настройка Spring Security
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
@@ -24,6 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 
+    /**
+     *
+     * @param dataSource
+     */
     @Autowired
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -44,9 +52,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.authenticationProvider(authenticationProvider());
     }
 
+    /**
+     * Метод configure () принимает объект HttpSecurity, который можно использовать для определения способа управления
+     * безопасностью на веб-уровне.
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+                // Вызов authorizeRequests () возвращает объект (ExpressionInterceptUrlRegis- try), для которого вы
+                // можете указать пути и шаблоны URL, а также требования безопасности для этих путей.
+                .authorizeRequests()
               //  .antMatchers("/register/**").permitAll()
                 .antMatchers("/").hasRole("EMPLOYEE")
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -61,6 +78,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 
+    /**
+     * Метод отвечает за кодирование пароля
+     * @return
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
