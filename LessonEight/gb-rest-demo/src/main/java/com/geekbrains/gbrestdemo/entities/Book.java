@@ -22,6 +22,8 @@ public class Book {
             joinColumns=@JoinColumn(name="book_id"),
             inverseJoinColumns=@JoinColumn(name="student_id")
     )
+
+    // @JsonBackReference нужен что бы не расспарсить лишнее (ограничение)
     @JsonBackReference
     private List<Student> students;
 
