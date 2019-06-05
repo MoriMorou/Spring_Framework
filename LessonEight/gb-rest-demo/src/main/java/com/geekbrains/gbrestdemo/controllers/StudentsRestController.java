@@ -33,6 +33,7 @@ public class StudentsRestController {
         return studentsService.getAllStudentsList();
     }
 
+    // theStudent.setId(0L) - зануляет idдля того? что бы он правильно записался
     @PostMapping("/students")
     public Student addStudent(@RequestBody Student theStudent) {
         theStudent.setId(0L);

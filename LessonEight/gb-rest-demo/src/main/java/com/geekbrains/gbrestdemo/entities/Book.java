@@ -23,6 +23,7 @@ public class Book {
             inverseJoinColumns=@JoinColumn(name="student_id")
     )
 
+    // @JsonBackReference нужен что бы не расспарсить лишнее (ограничение)
     @JsonBackReference
     private List<Student> students;
 
