@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>KORE.KOR</title>
+  </head>
+  
+  <body>
+    <h1>Welcome to...</h1>
+    <img th:src="@{/images/kore_logo.png}"/>
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+    
+    <a th:href="@{/login}" id="login">Buy a new staff</a>
+  </body>
+</html>
