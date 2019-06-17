@@ -14,7 +14,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: long
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -59,7 +59,7 @@ databaseChangeLog:
   - changeSet:
       id: 2
       author: morimorou
-      comment: "Create admin user"
+      comment: "Create admin and salesman users"
       changes:
         - insert:
             tableName: users
@@ -95,7 +95,7 @@ databaseChangeLog:
   - changeSet:
       id: 4
       author: morimorou
-      comment: "Create default user roles"
+      comment: "Create default User roles"
       changes:
         - insert:
             tableName: roles
@@ -141,7 +141,7 @@ databaseChangeLog:
   - changeSet:
       id: 6
       author: morimorou
-      comment: "Assign ADMIN role to admin user"
+      comment: "Assign ADMIN role to admin User"
       changes:
         - insert:
             tableName: users_roles
@@ -154,3 +154,4 @@ databaseChangeLog:
                   value: 1
 
 # goods
+
