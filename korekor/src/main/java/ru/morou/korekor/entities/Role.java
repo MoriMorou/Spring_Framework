@@ -63,4 +63,3 @@ public class Role {
         return Objects.hash(name);
     }
 }
-

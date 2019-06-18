@@ -9,5 +9,4 @@ public class KorekorApplication {
     public static void main(String[] args) {
         SpringApplication.run (KorekorApplication.class, args);
     }
-
 }
