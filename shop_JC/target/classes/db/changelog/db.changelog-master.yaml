@@ -1,0 +1,157 @@
+databaseChangeLog:
+  - preConditions:
+      - runningAs:
+          username: root
+          password: Morou4774
+# users
+  - changeSet:
+      id: 1
+      author: morimorou
+      comment: "Create users table"
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(512)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: fullname
+                  type: varchar(50)
+              - column:
+                  name: street
+                  type: varchar(100)
+              - column:
+                  name: city
+                  type: varchar(50)
+              - column:
+                  name: region
+                  type: varchar(100)
+              - column:
+                  name: country
+                  type: varchar(50)
+              - column:
+                  name: zip
+                  type: varchar(50)
+              - column:
+                  name: phoneNumber
+                  type: varchar(50)
+              - column:
+                  name: email
+                  type: varchar(50)
+
+  - changeSet:
+      id: 2
+      author: morimorou
+      comment: "Create admin and salesman users"
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: username
+                  value: "admin"
+              - column:
+                  name: password
+                  value: "$2a$10$uedJ6jkBS08x5mxZY6gV6.LAKSd202CiVutxz5VDq3TIyj9alkmIq"
+
+  - changeSet:
+      id: 3
+      author: morimorou
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+
+  - changeSet:
+      id: 4
+      author: morimorou
+      comment: "Create default User roles"
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: "ROLE_ADMIN"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: "ROLE_CLIENT"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: "ROLE_SALESMAN"
+
+  - changeSet:
+      id: 5
+      author: morimorou
+      changes:
+        - createTable:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_user_id
+                    references: users(id)
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_role_id
+                    references: roles(id)
+                    nullable: false
+
+  - changeSet:
+      id: 6
+      author: morimorou
+      comment: "Assign ADMIN role to admin User"
+      changes:
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1
+
+# goods
+
