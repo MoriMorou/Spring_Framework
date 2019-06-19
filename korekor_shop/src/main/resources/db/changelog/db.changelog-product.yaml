@@ -1,5 +1,5 @@
 databaseChangeLog:
-  - logicalFilePath: db/changelog/db.changelog-lesson-2.yaml
+  - logicalFilePath: db/changelog/db.changelog-product
   - changeSet:
       id: 1560697843763-1
       author: morimorou (generated)
@@ -121,7 +121,7 @@ databaseChangeLog:
             tableName: materials
 
   - changeSet:
-      id: 1560697843763-6
+      id: 1560697843763-7
       author: morimorou (generated)
       changes:
         - createTable:
@@ -141,7 +141,7 @@ databaseChangeLog:
             tableName: sizes
 
   - changeSet:
-      id: 1560697843763-3
+      id: 1560697843763-8
       author: morimorou (generated)
       changes:
         - createTable:
@@ -171,7 +171,7 @@ databaseChangeLog:
             tableName: pictures
 
   - changeSet:
-      id: 1560697843763-4
+      id: 1560697843763-9
       author: morimorou (generated)
       changes:
         - createTable:
@@ -191,7 +191,7 @@ databaseChangeLog:
             tableName: pictures_data
 
   - changeSet:
-      id: 1560697843763-5
+      id: 1560697843763-10
       author: morimorou (generated)
       changes:
         - createTable:
@@ -209,6 +209,9 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
+                  name: quantity
+                  type: BIGINT
+              - column:
                   name: price
                   type: DECIMAL(19, 2)
               - column:
@@ -219,8 +222,8 @@ databaseChangeLog:
             tableName: products
 
   - changeSet:
-      id: 1560697843763-6
-      author: aleks_usharovskii (generated)
+      id: 1560697843763-11
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
