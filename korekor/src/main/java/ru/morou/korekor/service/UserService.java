@@ -1,21 +1,19 @@
 package ru.morou.korekor.service;
 
-
 import org.springframework.security.core.userdetails.UserDetailsService;
-import ru.morou.korekor.entities.User;
+import ru.morou.korekor.service.repr.SystemUser;
 
 import java.util.List;
 
 public interface UserService extends UserDetailsService {
 
-    User findById(Long id);
+    SystemUser findById(Long id);
 
-    User findByUserName(String userName);
+    SystemUser findByUserName(String username);
 
-    boolean save(User user);
+    boolean save(SystemUser systemUser);
 
-    List<User> findAll();
+    void delete(Long id);
 
-    boolean deleteUser(User user);
-
+    List<SystemUser> findAll();
 }
