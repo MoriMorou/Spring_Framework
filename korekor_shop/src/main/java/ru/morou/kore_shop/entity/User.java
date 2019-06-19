@@ -74,7 +74,7 @@ public class User {
 
     @NotEmpty(message="post code cannot be empty.")
     @Column(name="postcode")
-    @Pattern(regexp="[0-9]{2}\\-[0-9]{3}", message="Post code is incorrect (XX-XXX eg. 20-199).") //Polish zipcode
+    @Pattern(regexp="[0-9]{2}\\-[0-9]{3}", message="Post code is incorrect (XX-XXX eg. 20-199).")
     private String postcode;
 
     @ManyToMany(fetch = FetchType.LAZY)
