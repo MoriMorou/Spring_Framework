@@ -12,6 +12,9 @@ import ru.morou.korekor.service.ProductService;
 @Controller
 public class MainController {
 
+    /**
+     *  Классический вариан логирования, а можно по другому https://habr.com/ru/post/276729/
+     */
     private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
     private final ProductService productService;

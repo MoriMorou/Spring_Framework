@@ -15,6 +15,9 @@ import java.util.Optional;
 @Controller
 public class PictureController {
 
+    /**
+     *  Классический вариан логирования, а можно по другому https://habr.com/ru/post/276729/
+     */
     private static final Logger logger = LoggerFactory.getLogger(PictureController.class);
 
     private final PictureRepository pictureRepository;
