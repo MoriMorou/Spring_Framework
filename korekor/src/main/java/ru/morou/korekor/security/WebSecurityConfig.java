@@ -15,7 +15,7 @@ import ru.morou.korekor.service.UserService;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserService userService;
 
@@ -33,17 +33,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                //.anyRequest().permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                    //.anyRequest().permitAll()
+                    .antMatchers("/admin/**").hasRole("ADMIN")
+                    .antMatchers("product").hasRole("USER")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/authenticateTheUser")
-                .permitAll()
+                    .formLogin()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/authenticateTheUser")
+                    .permitAll()
                 .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();
+                    .logout()
+                    .logoutSuccessUrl("/")
+                    .permitAll();
     }
 
     @Bean

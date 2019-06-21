@@ -70,7 +70,7 @@ public class AdminUserController {
     }
 
 
-    // FIXME: 2019-06-19 зачем model. Испрвить, пользотеля не удаляет в базе
+    // FIXME: 2019-06-19 зачем model? Испрвить, пользотеля не удаляет в базе
     @GetMapping("/admin/user/{id}/delete")
     public String adminDeleteUser(Model model, @PathVariable("id") Long id) {
         userService.delete(id);
