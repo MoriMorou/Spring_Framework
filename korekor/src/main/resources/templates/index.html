@@ -2,26 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:th="http://www.thymeleaf.org"
 	  lang="en">
-<head th:replace="fragments/Head :: head"><title>Home</title></head>
+
+<head th:replace="fragments/Head.html :: head"><title>Home</title></head>
 <body class="animsition">
 	
 	<!-- Header -->
 	<header>
 		<!-- Header desktop -->
-		<div th:replace="fragments/HeaderDesktop :: header-desktop"></div>
+		<div th:replace="fragments/HeaderDesktop.html :: header-desktop"></div>
 
 		<!-- Header Mobile -->
-		<div th:replace="fragments/HeaderMobile :: header-mobile"></div>
+		<div th:replace="fragments/HeaderMobile.html :: header-mobile"></div>
 
 		<!-- Menu Mobile -->
-		<div th:replace="fragments/HeaderMobile :: menu-mobile"></div>
+		<div th:replace="fragments/HeaderMobile.html :: menu-mobile"></div>
 
 		<!-- Modal Search -->
-		<div th:replace="fragments/HeaderMobile :: modal-search"></div>
+		<div th:replace="fragments/HeaderMobile.html :: modal-search"></div>
 	</header>
 
 	<!-- Cart -->
-	<div th:replace="fragments/Cart :: cart"></div>
+	<div th:replace="fragments/Cart.html :: cart"></div>
 
 	<!-- Slider -->
 	<section class="section-slide">
@@ -959,10 +960,10 @@
 	</section>
 
 	<!-- Footer -->
-	<div th:replace="fragments/Footer :: footer"></div>
+	<div th:replace="fragments/Footer.html :: footer"></div>
 
 	<!-- Back to top -->
-	<div th:replace="fragments/Footer :: backTotop"></div>
+	<div th:replace="fragments/Footer.html :: backTotop"></div>
 
 	<!-- Modal1 -->
 	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
