@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-lesson-2.yaml
   - changeSet:
       id: 1560697843763-1
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -21,7 +21,7 @@ databaseChangeLog:
             tableName: brands
   - changeSet:
       id: 1560697843763-2
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -40,7 +40,7 @@ databaseChangeLog:
             tableName: categories
   - changeSet:
       id: 1560697843763-3
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -69,7 +69,7 @@ databaseChangeLog:
             tableName: pictures
   - changeSet:
       id: 1560697843763-4
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -88,7 +88,7 @@ databaseChangeLog:
             tableName: pictures_data
   - changeSet:
       id: 1560697843763-5
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -115,7 +115,7 @@ databaseChangeLog:
             tableName: products
   - changeSet:
       id: 1560697843763-6
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -132,7 +132,7 @@ databaseChangeLog:
             tableName: products_categories
   - changeSet:
       id: 1560697843763-7
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -149,14 +149,14 @@ databaseChangeLog:
             tableName: products_pictures
   - changeSet:
       id: 1560697843763-8
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addPrimaryKey:
             columnNames: product_id, category_id
             tableName: products_categories
   - changeSet:
       id: 1560697843763-9
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: name
@@ -164,7 +164,7 @@ databaseChangeLog:
             tableName: brands
   - changeSet:
       id: 1560697843763-10
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: name
@@ -172,7 +172,7 @@ databaseChangeLog:
             tableName: categories
   - changeSet:
       id: 1560697843763-11
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: picture_data_id
@@ -180,7 +180,7 @@ databaseChangeLog:
             tableName: pictures
   - changeSet:
       id: 1560697843763-12
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: brand_id
@@ -192,7 +192,7 @@ databaseChangeLog:
             referencedTableName: brands
   - changeSet:
       id: 1560697843763-13
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: picture_data_id
@@ -204,7 +204,7 @@ databaseChangeLog:
             referencedTableName: pictures_data
   - changeSet:
       id: 1560697843763-14
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: product_id
@@ -216,7 +216,7 @@ databaseChangeLog:
             referencedTableName: products
   - changeSet:
       id: 1560697843763-15
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: picture_id
@@ -228,7 +228,7 @@ databaseChangeLog:
             referencedTableName: pictures
   - changeSet:
       id: 1560697843763-16
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: category_id
@@ -240,7 +240,7 @@ databaseChangeLog:
             referencedTableName: categories
   - changeSet:
       id: 1560697843763-17
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: product_id
@@ -253,7 +253,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 1560462342525-19
-      author: aleks_usharovskii
+      author: morimorou
       comment: "Insert default categories"
       changes:
         - insert:
@@ -261,31 +261,13 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "Hot Deals"
+                  value: "Clothes"
         - insert:
             tableName: categories
             columns:
               - column:
                   name: name
-                  value: "Laptops"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "Smartphones"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "Tablets"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "Cameras"
+                  value: "Shoes"
         - insert:
             tableName: categories
             columns:
@@ -296,7 +278,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 1560462342525-20
-      author: aleks_usharovskii
+      author: morimorou
       comment: "Insert default brands"
       changes:
         - insert:
@@ -304,17 +286,17 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "Samsung"
+                  value: "Kore"
         - insert:
             tableName: brands
             columns:
               - column:
                   name: name
-                  value: "LG"
+                  value: "Jeffrey Campbell"
         - insert:
             tableName: brands
             columns:
               - column:
                   name: name
-                  value: "Sony"
+                  value: "Other"
       rollback:

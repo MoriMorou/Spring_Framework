@@ -37,7 +37,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 2
-      author: aleks_usharovskii
+      author: morimorou
       comment: "Create admin user"
       changes:
         - insert:
@@ -53,7 +53,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 3
-      author: aleks_usharovskii
+      author: morimorou
       changes:
         - createTable:
             tableName: roles
@@ -74,7 +74,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 4
-      author: aleks_usharovskii
+      author: morimorou
       comment: "Create default user roles"
       changes:
         - insert:
@@ -99,7 +99,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 5
-      author: aleks_usharovskii
+      author: morimorou
       changes:
         - createTable:
             tableName: users_roles
@@ -121,7 +121,7 @@ databaseChangeLog:
 
   - changeSet:
       id: 6
-      author: aleks_usharovskii
+      author: morimorou
       comment: "Assign ADMIN role to admin user"
       changes:
         - insert:

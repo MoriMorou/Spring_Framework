@@ -11,7 +11,7 @@ databaseChangeLog:
 
   - changeSet:
       id: lesson_1
-      author: aleks_usharovskii
+      author: morimorou
       changes:
         - tagDatabase:
             tag: lesson_1
@@ -22,7 +22,7 @@ databaseChangeLog:
 
   - changeSet:
       id: lesson_2
-      author: aleks_usharovskii
+      author: morimorou
       changes:
         - tagDatabase:
             tag: lesson_2
