@@ -119,7 +119,7 @@
                 <configuration>
                     <propertyFile>${project.build.outputDirectory}/liquibase-maven-plugin.properties</propertyFile>
                     <systemProperties>
-                        <user.name>aleks_usharovskii</user.name>
+                        <user.name>morimorou</user.name>
                     </systemProperties>
                     <logging>info</logging>
                 </configuration>
