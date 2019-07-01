@@ -1,5 +1,7 @@
 package ru.morou.korekor.service;
 
+import ru.morou.korekor.service.repr.ProductInfo;
+import java.util.Map;
 import java.math.BigDecimal;
 
 public interface CartService {
@@ -12,7 +14,7 @@ public interface CartService {
 
     Map<ProductInfo, Integer> findAllItems();
 
-    Integer getItemQty();
+    Integer getItemsQty();
 
     BigDecimal getSubTotal();
 }

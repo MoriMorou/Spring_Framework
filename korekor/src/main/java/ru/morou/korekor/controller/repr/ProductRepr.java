@@ -6,12 +6,13 @@ import ru.morou.korekor.persist.model.Category;
 import ru.morou.korekor.persist.model.Picture;
 import ru.morou.korekor.persist.model.Product;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ProductRepository {
+public class ProductRepr implements Serializable {
 
     private Long id;
 
@@ -27,10 +28,10 @@ public class ProductRepository {
 
     private MultipartFile[] newPictures;
 
-    public ProductRepository() {
+    public ProductRepr() {
     }
 
-    public ProductRepository(Product product) {
+    public ProductRepr(Product product) {
         this.id = product.getId();
         this.name = product.getName();
         this.price = product.getPrice();

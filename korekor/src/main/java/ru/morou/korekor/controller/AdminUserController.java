@@ -23,7 +23,8 @@ public class AdminUserController {
     private final UserService userService;
 
     @Autowired
-    public AdminUserController(RoleRepository roleRepository, @Lazy UserService userService) {
+    public AdminUserController(RoleRepository roleRepository,
+                               @Lazy UserService userService) {
         this.roleRepository = roleRepository;
         this.userService = userService;
     }
@@ -62,15 +63,15 @@ public class AdminUserController {
     @PostMapping("/admin/user")
     public String adminUpsertUser(@Valid SystemUser user, Model model, BindingResult bindingResult) {
         model.addAttribute("activePage", "Users");
+
         if (bindingResult.hasErrors()) {
             return "admin/user_form";
         }
+
         userService.save(user);
         return "redirect:/admin/users";
     }
 
-
-    // FIXME: 2019-06-19 зачем model? Испрвить, пользотеля не удаляет в базе
     @GetMapping("/admin/user/{id}/delete")
     public String adminDeleteUser(Model model, @PathVariable("id") Long id) {
         userService.delete(id);

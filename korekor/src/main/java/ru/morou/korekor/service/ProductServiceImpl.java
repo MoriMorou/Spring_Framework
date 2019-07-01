@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
-import ru.morou.korekor.controller.repr.ProductRepository;
+import ru.morou.korekor.controller.repr.ProductRepr;
 import ru.morou.korekor.persist.model.Picture;
 import ru.morou.korekor.persist.model.PictureData;
 import ru.morou.korekor.persist.model.Product;
@@ -14,6 +14,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * @Autowired - Аннотация позволяет автоматически установить значение поля.
+ * @Transactional - Перед исполнением метода помеченного данной аннотацией начинается транзакция, после выполнения
+ * метода транзакция коммитится, при выбрасывании RuntimeException откатывается.
+ */
 
 public class ProductServiceImpl implements ProductService {
 
@@ -28,16 +34,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public List<ProductRepository> findAll() {
+    public List<ProductRepr> findAll() {
         return productRepository.findAll().stream()
-                .map(ProductRepository::new)
+                .map(ProductRepr::new)
                 .collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public ProductRepository findById(Long id) {
-        return new ProductRepository (productRepository.findById(id).get());
+    public ProductRepr findById(Long id) {
+        return new ProductRepr (productRepository.findById(id).get());
     }
 
     @Override
@@ -48,15 +54,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void save(ProductRepository productRepository) throws IOException {
-        Product product = (productRepository.getId() != null) ? this.productRepository.findById(productRepository.getId()).get()
+    public void save(ProductRepr productRepr) throws IOException {
+        Product product = (productRepr.getId() != null) ? this.productRepository.findById(productRepr.getId()).get()
                 : new Product();
-        product.setName(productRepository.getName());
-        product.setCategories(productRepository.getCategories());
-        product.setBrand(productRepository.getBrand());
-        product.setPrice(productRepository.getPrice());
-        if (productRepository.getNewPictures() != null) {
-            for (MultipartFile newPicture : productRepository.getNewPictures()) {
+        product.setName(productRepr.getName());
+        product.setCategories(productRepr.getCategories());
+        product.setBrand(productRepr.getBrand());
+        product.setPrice(productRepr.getPrice());
+        if (productRepr.getNewPictures() != null) {
+            for (MultipartFile newPicture : productRepr.getNewPictures()) {
                 logger.info("Product {} file {} size {}", product.getId(),
                         newPicture.getOriginalFilename(), newPicture.getSize());
 

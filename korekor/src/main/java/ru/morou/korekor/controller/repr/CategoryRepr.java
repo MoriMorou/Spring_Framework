@@ -1,6 +1,6 @@
 package ru.morou.korekor.controller.repr;
 
-public class CategoryRepository {
+public class CategoryRepr {
 
     private long id;
 
@@ -8,7 +8,7 @@ public class CategoryRepository {
 
     private long productCount;
 
-    public CategoryRepository(long id, String name, long productCount) {
+    public CategoryRepr(long id, String name, long productCount) {
         this.id = id;
         this.name = name;
         this.productCount = productCount;

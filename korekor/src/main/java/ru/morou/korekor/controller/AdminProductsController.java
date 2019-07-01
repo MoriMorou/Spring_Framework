@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import ru.morou.korekor.controller.repr.ProductRepository;
+import ru.morou.korekor.controller.repr.ProductRepr;
 import ru.morou.korekor.persist.repo.BrandRepository;
 import ru.morou.korekor.persist.repo.CategoryRepository;
 import ru.morou.korekor.service.ProductService;
@@ -61,14 +61,14 @@ public class AdminProductsController {
     public String adminCreateProduct(Model model) {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Products");
-        model.addAttribute("product", new ProductRepository ());
+        model.addAttribute("product", new ProductRepr());
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("brands", brandRepository.findAll());
         return "admin/product_form";
     }
 
     @PostMapping("/admin/product")
-    public String adminUpsertProduct(Model model, RedirectAttributes redirectAttributes, ProductRepository product) {
+    public String adminUpsertProduct(Model model, RedirectAttributes redirectAttributes, ProductRepr product) {
         model.addAttribute("activePage", "Products");
 
         try {

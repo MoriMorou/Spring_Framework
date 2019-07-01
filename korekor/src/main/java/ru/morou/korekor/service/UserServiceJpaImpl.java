@@ -19,6 +19,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @Autowired - Аннотация позволяет автоматически установить значение поля.
+ * @Transactional - Перед исполнением метода помеченного данной аннотацией начинается транзакция, после выполнения
+ * метода транзакция коммитится, при выбрасывании RuntimeException откатывается.
+ */
+
+
 public class UserServiceJpaImpl implements UserService {
 
     private UserRepository userRepository;

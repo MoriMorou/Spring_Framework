@@ -2,6 +2,7 @@ package ru.morou.korekor.persist.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +20,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 //@Access(AccessType.FIELD)
-public class User {
+public class User implements Serializable {
 
     // FIXME: 6/19/2019 Какая неприятность может произойти, если serialVersionUID не указан при UserDetails?
     private static final long serialVersionUID = 1L;
