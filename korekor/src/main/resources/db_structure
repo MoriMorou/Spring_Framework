@@ -1,0 +1,9 @@
+{
+  "jdbcUrl": "jdbc:mysql://us-cdbr-iron-east-02.cleardb.net/ad_55d4119a8019cfb?user=bcbfc4d6a52289&password=3413c436",
+  "uri": "mysql://bcbfc4d6a52289:3413c436@us-cdbr-iron-east-02.cleardb.net:3306/ad_55d4119a8019cfb?reconnect=true",
+  "name": "ad_55d4119a8019cfb",
+  "hostname": "us-cdbr-iron-east-02.cleardb.net",
+  "port": "3306",
+  "username": "bcbfc4d6a52289",
+  "password": "3413c436"
+}
