@@ -2,8 +2,8 @@ databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-master.yaml
   - preConditions:
       - runningAs:
-          username: root
-          password: Morou4774
+          username: b195cb36447b75
+          password: 02de9f04
 
   - include:
       file: db.changelog-lesson-1.yaml
