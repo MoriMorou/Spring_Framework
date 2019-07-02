@@ -19,7 +19,7 @@
 
                 <div class="block2-txt flex-w flex-t p-t-14">
                     <div class="block2-txt-child1 flex-col-l ">
-                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                        <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6" >
                             Herschel supply
                         </a>
 
@@ -47,25 +47,10 @@
             <p class="product-category" th:text="${categoryName}">Category</p>
             <h3 class="product-name"><a th:href="@{/product/{id}(id=${productId})}" th:text="${productName}">product name goes here</a></h3>
             <h4 class="product-price">
-                <span th:text="${price}" th:remove="tag">$980.00</span>
-                <del class="product-old-price" th:text="${oldPrice}">$990.00</del>
+                <span th:text="${price}" th:remove="tag">000.00</span>
+                <del class="product-old-price" th:text="${oldPrice}">000.00</del>
             </h4>
         </div>
-    </div>
-    <!-- /product widget -->
-
-    <div th:fragment="cartProductWidgetSmall (productId, imageUrl, productName, categoryName, price, qty)" class="product-widget">
-        <div class="product-img">
-            <img th:src="@{{image_url}(image_url=${imageUrl})}" alt="">
-        </div>
-        <div class="product-body">
-            <h3 class="product-name"><a th:href="@{/product/{id}(id=${productId})}" th:text="${productName}">product name goes here</a></h3>
-            <h4 class="product-price">
-                <span class="qty" th:text="qty">1x</span>
-                <span th:text="${price}" th:remove="tag">$980.00</span>
-            </h4>
-        </div>
-        <button class="delete"><i class="fa fa-close"></i></button>
     </div>
 
 </body>

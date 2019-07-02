@@ -50,9 +50,9 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/cart")
+    @GetMapping("/shopping-cart")
     public String cartPage() {
-        return "cart";
+        return "shopping-cart";
     }
 
     @GetMapping("/checkout")
@@ -60,13 +60,13 @@ public class MainController {
         return "checkout";
     }
 
-    @GetMapping("/store")
+    @GetMapping("/products-list")
     public String storePage(Model model) {
         model.addAttribute("products", productService.findAll());
-        return "store";
+        return "products-list";
     }
 
-    @PostMapping("/cart/update")
+    @PostMapping("/shopping-cart/update")
     public String updateCart(CartItemRepr cartItemRepr, HttpServletRequest httpServletRequest) {
         logger.info("Update customer cart");
         ProductRepr productRepr = productService.findById(cartItemRepr.getProductId());

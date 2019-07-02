@@ -9,10 +9,11 @@ import ru.morou.korekor.persist.model.Product;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ProductRepr implements Serializable {
+public class ProductRepr {
 
     private Long id;
 
@@ -24,7 +25,7 @@ public class ProductRepr implements Serializable {
 
     private Brand brand;
 
-    private List<Picture> pictures;
+    private List<PictureRepr> pictures;
 
     private MultipartFile[] newPictures;
 
@@ -37,7 +38,9 @@ public class ProductRepr implements Serializable {
         this.price = product.getPrice();
         this.categories = product.getCategories();
         this.brand = product.getBrand();
-        this.pictures = product.getPictures();
+        this.pictures = product.getPictures().stream()
+                .map(PictureRepr::new)
+                .collect(Collectors.toList());
     }
 
     public Long getId() {
@@ -87,11 +90,11 @@ public class ProductRepr implements Serializable {
         this.brand = brand;
     }
 
-    public List<Picture> getPictures() {
+    public List<PictureRepr> getPictures() {
         return pictures;
     }
 
-    public void setPictures(List<Picture> pictures) {
+    public void setPictures(List<PictureRepr> pictures) {
         this.pictures = pictures;
     }
 
@@ -102,4 +105,18 @@ public class ProductRepr implements Serializable {
     public void setNewPictures(MultipartFile[] newPictures) {
         this.newPictures = newPictures;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductRepr that = (ProductRepr) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
+
