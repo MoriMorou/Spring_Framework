@@ -1,10 +1,10 @@
 package ru.morou.korekor.persist.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.util.Date;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @Access нужна для определения типа доступа (access type) для класса entity, суперкласса, embeddable или отдельных
@@ -33,6 +33,36 @@ public class User implements Serializable {
     @Column(name = "username", unique = true, nullable = false)
     private String userName;
 
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
+    
+    @NotEmpty(message="post code cannot be empty.")
+    @Column(name="postcode")
+    @Pattern(regexp="[0-9]{2}\\-[0-9]{3}", message="Post code is incorrect (XX-XXX eg. 20-199).")
+    private String postcode;
+
+    @Column(name = "phone")
+    @Pattern(regexp="(^$|[0-9]{9})", message="Phone number format is not correct (NNNNNNNNN eg.: 700700700).")
+    private String phone;
+    
+    @Column(name = "status")
+    private boolean status;
+    
     /**
      * Аннотация @Pattern, предоставляя его регулярное выражение, которое гарантирует, что значение свойства
      * соответствует желаемому формату.
@@ -49,53 +79,38 @@ public class User implements Serializable {
 //            + "upper, lower case letter, special character and its length should be in range from 6 to 60 chars")
 //    private String passwordConfirmation;
 
-    @Column(name = "first_name")
-    private String firstName;
+    // FIXME: 7/5/2019 Проверить!!!
+    @Column(name = "data")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date userData;
 
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "email")
-    private String email;
-
-    // FIXME: 2019-06-19 буду использовать позже
-//    @Column(name = "phone", nullable = false, unique = true)
-//    @Pattern(regexp="(^$|[0-9]{9})", message="Phone number format is not correct (NNNNNNNNN eg.: 700700700).")
-//    private String phone;
-//    
-//    @Column(name="address")
-//    private String address;
-//
-//    @Column(name="city")
-//    private String city;
-//
-//    @NotEmpty(message="post code cannot be empty.")
-//    @Column(name="postcode")
-//    @Pattern(regexp="[0-9]{2}\\-[0-9]{3}", message="Post code is incorrect (XX-XXX eg. 20-199).")
-//    private String postcode;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_roles",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @ManyToOne(optional = false)
+    private Role role;
 
     public User() {
-        this.roles = new HashSet<>();
     }
 
-    public User(String userName, String password, String firstName, String lastName, String email) {
-        this(userName, password, firstName, lastName, email, new HashSet<>());
-    }
-
-    public User(String userName, String password, String firstName, String lastName, String email,
-                Set<Role> roles) {
+    // FIXME: 7/5/2019 проверить
+    public User(String userName, String email, String firstName, String lastName, String address, String city, String country, @NotEmpty(message = "post code cannot be empty.") @Pattern(regexp = "[0-9]{2}\\-[0-9]{3}", message = "Post code is incorrect (XX-XXX eg. 20-199).") String postcode, @Pattern(regexp = "(^$|[0-9]{9})", message = "Phone number format is not correct (NNNNNNNNN eg.: 700700700).") String phone, boolean status, @Pattern(regexp = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,60}",
+            message = "Password is invalid. It should contain at least one: digit, upper, lower case letter, special " +
+                    "character and its length should be in range from 6 to 60 chars") String password, Date userData, Role role) {
         this.userName = userName;
-        this.password = password;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        this.roles = roles;
+        this.address = address;
+        this.city = city;
+        this.country = country;
+        this.postcode = postcode;
+        this.phone = phone;
+        this.status = status;
+        this.password = password;
+        this.userData = userData;
+        this.role = role;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
     public Long getId() {
@@ -114,12 +129,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -138,26 +153,95 @@ public class User implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getAddress() {
+        return address;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getCity() {
+        return city;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getUserData() {
+        return userData;
+    }
+
+    public void setUserData(Date userData) {
+        this.userData = userData;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", userName='" + userName + '\'' + ", password='" + "*********" + '\''
-                + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", email='" + email + '\''
-                + ", roles=" + roles + '}';
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                ", password='" + password + '\'' +
+                ", userData=" + userData +
+                ", role=" + role +
+                '}';
     }
 }
