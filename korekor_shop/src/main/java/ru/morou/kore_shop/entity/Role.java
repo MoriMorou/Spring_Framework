@@ -1,12 +1,14 @@
 package ru.morou.kore_shop.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "user_roles")
+public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,14 +18,26 @@ public class Role {
     @Column(name = "name", unique = true, nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    @OneToMany(
+            mappedBy = "name",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<Customer> customers;
+
+    @OneToMany(
+            mappedBy = "name",
+            orphanRemoval = true,
+            cascade = CascadeType.ALL)
+    private List<Staff> staff;
 
     public Role() {
+
     }
 
-    public Role(String name) {
+    public Role(String name, List<Customer> customers, List<Staff> staff) {
         this.name = name;
+        this.customers = customers;
+        this.staff = staff;
     }
 
     public Long getId() {
@@ -42,13 +56,22 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public List<Customer> getCustomers() {
+        return customers;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
+
+    public List<Staff> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<Staff> staff) {
+        this.staff = staff;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -63,3 +86,4 @@ public class Role {
         return Objects.hash(name);
     }
 }
+

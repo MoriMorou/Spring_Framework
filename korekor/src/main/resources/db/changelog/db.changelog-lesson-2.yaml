@@ -1,5 +1,5 @@
 databaseChangeLog:
-  - logicalFilePath: db/changelog/db.changelog-product
+  - logicalFilePath: db/changelog/db.changelog-lesson-2.yaml
   - changeSet:
       id: 1560697843763-1
       author: morimorou (generated)
@@ -10,7 +10,7 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    primaryKeyName: typesPK
+                    primaryKeyName: brandsPK
                   name: id
                   type: BIGINT
               - column:
@@ -18,8 +18,7 @@ databaseChangeLog:
                     nullable: false
                   name: name
                   type: VARCHAR(255)
-            tableName: types
-
+            tableName: brands
   - changeSet:
       id: 1560697843763-2
       author: morimorou (generated)
@@ -39,109 +38,8 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
             tableName: categories
-
   - changeSet:
       id: 1560697843763-3
-      author: morimorou (generated)
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: brandsPK
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: name
-                  type: VARCHAR(255)
-            tableName: brands
-
-  - changeSet:
-      id: 1560697843763-4
-      author: morimorou (generated)
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: countriesPK
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: name
-                  type: VARCHAR(255)
-            tableName: countries
-
-  - changeSet:
-      id: 1560697843763-5
-      author: morimorou (generated)
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: colorsPK
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: name
-                  type: VARCHAR(255)
-            tableName: colors
-
-  - changeSet:
-      id: 1560697843763-6
-      author: morimorou (generated)
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: materialsPK
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: name
-                  type: VARCHAR(255)
-            tableName: materials
-
-  - changeSet:
-      id: 1560697843763-7
-      author: morimorou (generated)
-      changes:
-        - createTable:
-            columns:
-              - column:
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: sizesPK
-                  name: id
-                  type: BIGINT
-              - column:
-                  constraints:
-                    nullable: false
-                  name: name
-                  type: VARCHAR(255)
-            tableName: sizes
-
-  - changeSet:
-      id: 1560697843763-8
       author: morimorou (generated)
       changes:
         - createTable:
@@ -169,9 +67,8 @@ databaseChangeLog:
                   name: picture_data_id
                   type: BIGINT
             tableName: pictures
-
   - changeSet:
-      id: 1560697843763-9
+      id: 1560697843763-4
       author: morimorou (generated)
       changes:
         - createTable:
@@ -189,9 +86,8 @@ databaseChangeLog:
                   name: data
                   type: MEDIUMBLOB
             tableName: pictures_data
-
   - changeSet:
-      id: 1560697843763-10
+      id: 1560697843763-5
       author: morimorou (generated)
       changes:
         - createTable:
@@ -209,9 +105,6 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
-                  name: quantity
-                  type: BIGINT
-              - column:
                   name: price
                   type: DECIMAL(19, 2)
               - column:
@@ -220,9 +113,8 @@ databaseChangeLog:
                   name: brand_id
                   type: BIGINT
             tableName: products
-
   - changeSet:
-      id: 1560697843763-11
+      id: 1560697843763-6
       author: morimorou (generated)
       changes:
         - createTable:
@@ -238,10 +130,9 @@ databaseChangeLog:
                   name: category_id
                   type: BIGINT
             tableName: products_categories
-
   - changeSet:
       id: 1560697843763-7
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - createTable:
             columns:
@@ -256,36 +147,32 @@ databaseChangeLog:
                   name: picture_id
                   type: BIGINT
             tableName: products_pictures
-
   - changeSet:
       id: 1560697843763-8
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addPrimaryKey:
             columnNames: product_id, category_id
             tableName: products_categories
-
   - changeSet:
       id: 1560697843763-9
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: name
             constraintName: UC_BRANDSNAME_COL
             tableName: brands
-
   - changeSet:
       id: 1560697843763-10
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: name
             constraintName: UC_CATEGORIESNAME_COL
             tableName: categories
-
   - changeSet:
       id: 1560697843763-11
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addUniqueConstraint:
             columnNames: picture_data_id
@@ -293,7 +180,7 @@ databaseChangeLog:
             tableName: pictures
   - changeSet:
       id: 1560697843763-12
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: brand_id
@@ -305,7 +192,7 @@ databaseChangeLog:
             referencedTableName: brands
   - changeSet:
       id: 1560697843763-13
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: picture_data_id
@@ -317,7 +204,7 @@ databaseChangeLog:
             referencedTableName: pictures_data
   - changeSet:
       id: 1560697843763-14
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: product_id
@@ -329,7 +216,7 @@ databaseChangeLog:
             referencedTableName: products
   - changeSet:
       id: 1560697843763-15
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: picture_id
@@ -341,7 +228,7 @@ databaseChangeLog:
             referencedTableName: pictures
   - changeSet:
       id: 1560697843763-16
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: category_id
@@ -353,7 +240,7 @@ databaseChangeLog:
             referencedTableName: categories
   - changeSet:
       id: 1560697843763-17
-      author: aleks_usharovskii (generated)
+      author: morimorou (generated)
       changes:
         - addForeignKeyConstraint:
             baseColumnNames: product_id
@@ -363,10 +250,6 @@ databaseChangeLog:
             initiallyDeferred: false
             referencedColumnNames: id
             referencedTableName: products
-
-
-
-
 
   - changeSet:
       id: 1560462342525-19
@@ -378,37 +261,19 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "male"
+                  value: "Clothes"
         - insert:
             tableName: categories
             columns:
               - column:
                   name: name
-                  value: "female"
+                  value: "Shoes"
         - insert:
             tableName: categories
             columns:
               - column:
                   name: name
-                  value: "girl"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "boy"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "baby"
-        - insert:
-            tableName: categories
-            columns:
-              - column:
-                  name: name
-                  value: "unisex"
+                  value: "Accessories"
       rollback:
 
   - changeSet:
@@ -421,17 +286,17 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "adidas"
+                  value: "Kore"
         - insert:
             tableName: brands
             columns:
               - column:
                   name: name
-                  value: "nike"
+                  value: "Jeffrey Campbell"
         - insert:
             tableName: brands
             columns:
               - column:
                   name: name
-                  value: "puma"
+                  value: "Other"
       rollback:

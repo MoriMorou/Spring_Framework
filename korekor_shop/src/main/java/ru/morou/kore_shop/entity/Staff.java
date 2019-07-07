@@ -1,4 +1,4 @@
-package ru.morou.korekor.persist.model;
+package ru.morou.kore_shop.entity;
 
 import javax.persistence.*;
 import java.util.Date;

@@ -15,54 +15,29 @@ public class Product implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "qty")
-    private int qty;
+    @Column(name = "name", nullable = false)
+    private String name;
 
-    @Column(name = "status")
-    private boolean status;
+    @Column(name = "price")
+    private BigDecimal price;
 
-    @ManyToOne(optional = false)
-    private ProductTypes productTypes;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "products_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
 
-    @ManyToOne(optional = false)
-    private Items items;
-
-    @ManyToOne(optional = false)
-    private Color color;
-
-    @ManyToOne(optional = false)
-    private Size size;
-
-    // FIXME: 7/5/2019 доделать (внести в схему)
     @ManyToOne(optional = false)
     private Brand brand;
 
-    // FIXME: 7/5/2019 доделать!!! упустила таблицу
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "products_categories",
-            joinColumns = @JoinColumn(name = "products_id"),
-            inverseJoinColumns = @JoinColumn(name = "categories_id"))
-    private Set<Category> categories;
-
     @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
-    @JoinTable(name = "pictures_products",
-            joinColumns = @JoinColumn(name = "products_id"),
-            inverseJoinColumns = @JoinColumn(name = "pictures_id"))
+    @JoinTable(name = "products_pictures",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "picture_id"))
     private List<Picture> pictures;
 
     public Product() {
-    }
 
-    public Product(int qty, boolean status, ProductTypes productTypes, Items items, Color color, Size size, Brand brand, Set<Category> categories, List<Picture> pictures) {
-        this.qty = qty;
-        this.status = status;
-        this.productTypes = productTypes;
-        this.items = items;
-        this.color = color;
-        this.size = size;
-        this.brand = brand;
-        this.categories = categories;
-        this.pictures = pictures;
     }
 
     public Long getId() {
@@ -73,60 +48,20 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public int getQty() {
-        return qty;
+    public String getName() {
+        return name;
     }
 
-    public void setQty(int qty) {
-        this.qty = qty;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean isStatus() {
-        return status;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public ProductTypes getProductTypes() {
-        return productTypes;
-    }
-
-    public void setProductTypes(ProductTypes productTypes) {
-        this.productTypes = productTypes;
-    }
-
-    public Items getItems() {
-        return items;
-    }
-
-    public void setItems(Items items) {
-        this.items = items;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Size getSize() {
-        return size;
-    }
-
-    public void setSize(Size size) {
-        this.size = size;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Set<Category> getCategories() {
@@ -137,27 +72,19 @@ public class Product implements Serializable {
         this.categories = categories;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     public List<Picture> getPictures() {
         return pictures;
     }
 
     public void setPictures(List<Picture> pictures) {
         this.pictures = pictures;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", qty=" + qty +
-                ", status=" + status +
-                ", productTypes=" + productTypes +
-                ", items=" + items +
-                ", color=" + color +
-                ", size=" + size +
-                ", brand=" + brand +
-                ", categories=" + categories +
-                ", pictures=" + pictures +
-                '}';
     }
 }

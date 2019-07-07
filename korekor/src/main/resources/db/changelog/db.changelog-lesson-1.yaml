@@ -1,5 +1,5 @@
 databaseChangeLog:
-  - logicalFilePath: db/changelog/db.changelog-user.yaml
+  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
   - changeSet:
       id: 1
       author: morimorou
@@ -94,7 +94,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "ROLE_SALESMAN"
+                  value: "ROLE_SAlESMAN"
       rollback:
 
   - changeSet:

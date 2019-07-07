@@ -2,12 +2,11 @@ package ru.morou.korekor.persist.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "roles")
 public class Role implements Serializable {
 
     @Id
@@ -15,28 +14,18 @@ public class Role implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "role", unique = true, nullable = false)
-    private String role;
+    @Column(name = "name", unique = true, nullable = false)
+    private String name;
 
-    @OneToMany(
-            mappedBy = "role",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
-    private List<User> users;
-
-    @OneToMany(
-            mappedBy = "role",
-            orphanRemoval = true,
-            cascade = CascadeType.ALL)
-    private List<Staff> staff;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     public Role() {
     }
-//
-//    public Role(String role, List<User> users) {
-//        this.role = role;
-//        this.users = users;
-//    }
+
+    public Role(String name) {
+        this.name = name;
+    }
 
     public Long getId() {
         return id;
@@ -46,27 +35,32 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<User> getUsers() {
+    public Set<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(Set<User> users) {
         this.users = users;
     }
 
-    public List<Staff> getStaff() {
-        return staff;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return name.equals(role.name);
     }
 
-    public void setStaff(List<Staff> staff) {
-        this.staff = staff;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

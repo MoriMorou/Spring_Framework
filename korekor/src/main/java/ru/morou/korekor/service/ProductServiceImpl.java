@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 import ru.morou.korekor.controller.repr.ProductRepr;
 import ru.morou.korekor.persist.model.Picture;
+import ru.morou.korekor.persist.model.PictureData;
 import ru.morou.korekor.persist.model.Product;
 
 import javax.transaction.Transactional;

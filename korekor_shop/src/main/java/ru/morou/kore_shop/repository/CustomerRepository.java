@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import org.springframework.stereotype.Repository;
-import ru.morou.kore_shop.entity.User;
+import ru.morou.kore_shop.entity.Customer;
 
 /**
  * JpaRepository расширяет PagingAndSortingRepository который, в свою очередь, расширяет CrudRepository.
@@ -14,13 +14,8 @@ import ru.morou.kore_shop.entity.User;
  */
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    /**
-     * @Querty (данные; запрос; [заголовки])
-     * @param userName
-     * @return
-     */
-    @Query("from User u join fetch u.roles r where u.userName = :userName")
-    User findOneByUserName(String userName);
+    @Query("from Customers c join fetch c.roles r where c.customerName = :customerName")
+    Customer findOneByCustomerName(String customerName);
 }

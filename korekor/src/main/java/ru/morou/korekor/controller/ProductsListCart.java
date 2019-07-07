@@ -1,4 +1,4 @@
-package ru.morou.korekor.controller;//package ru.morou.korekor.controller;
+//package ru.morou.korekor.controller;
 //
 //import org.springframework.stereotype.Controller;
 //import org.springframework.web.bind.annotation.GetMapping;
