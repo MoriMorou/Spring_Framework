@@ -19,19 +19,21 @@ public class SystemUser {
 
     private String email;
 
+    private byte[] photo;
+
     private Set<Role> roles;
 
     public SystemUser() {
 
     }
 
-    public SystemUser(String userName, String password, String firstName,
-                      String lastName, String email, Set<Role> roles) {
+    public SystemUser(String userName, String password, String firstName, String lastName, String email, Set<Role> roles, byte[] photo) {
         this.userName = userName;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.photo = photo;
         this.roles = roles;
     }
 
@@ -41,6 +43,7 @@ public class SystemUser {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
+        this.photo = user.getPhoto ();
         this.roles = user.getRoles();
     }
 
@@ -98,5 +101,13 @@ public class SystemUser {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 }

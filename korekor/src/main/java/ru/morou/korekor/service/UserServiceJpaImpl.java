@@ -51,7 +51,7 @@ public class UserServiceJpaImpl implements UserService {
     public SystemUser findByUserName(String username) {
         User user = userRepository.findOneByUserName(username);
         return new SystemUser(user.getUserName(), user.getPassword(),
-                user.getFirstName(), user.getLastName(), user.getEmail(), user.getRoles());
+                user.getFirstName(), user.getLastName(), user.getEmail(), user.getRoles(), user.getPhoto ());
     }
 
     @Override
