@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-master.yaml
   - preConditions:
       - runningAs:
-          username: root
+          username: morimorou
           password: Morou4774
 
   - include:
