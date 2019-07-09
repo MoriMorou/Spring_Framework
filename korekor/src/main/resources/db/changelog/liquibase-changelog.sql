@@ -134,10 +134,19 @@ CREATE TABLE IF NOT EXISTS `MySQL-7111`.`users` (
   `last_name` VARCHAR(50) NULL DEFAULT NULL,
   `email` VARCHAR(50) NULL DEFAULT NULL,
   `photo` MEDIUMBLOB NULL DEFAULT NULL,
-  `create_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   `delivery_address_id` INT(11) UNSIGNED NOT NULL,
+  `create_at` TIMESTAMP NOT NULL,
   `update_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `username` (`username` ASC))
+  UNIQUE INDEX `username` (`username` ASC)
+--   ,
+--   INDEX `fk_users_delivery_address1_idx` (`delivery_address_id` ASC),
+--   CONSTRAINT `fk_users_delivery_address1`
+--     FOREIGN KEY (`delivery_address_id`)
+--     REFERENCES `MySQL-7111`.`delivery_address` (`id`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION
+    )
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
