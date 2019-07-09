@@ -43,7 +43,7 @@ public class SystemUser {
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
         this.email = user.getEmail();
-        this.photo = user.getPhoto ();
+        this.photo = user.getPhoto();
         this.roles = user.getRoles();
     }
 
