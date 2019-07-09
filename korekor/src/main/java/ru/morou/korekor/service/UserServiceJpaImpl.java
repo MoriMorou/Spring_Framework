@@ -13,10 +13,7 @@ import ru.morou.korekor.persist.repo.UserRepository;
 import ru.morou.korekor.service.repr.SystemUser;
 
 import javax.transaction.Transactional;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
