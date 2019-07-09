@@ -67,6 +67,7 @@ public class UserServiceJpaImpl implements UserService {
         user.setFirstName(systemUser.getFirstName());
         user.setLastName(systemUser.getLastName());
         user.setEmail(systemUser.getEmail());
+        user.setPhoto(systemUser.getPhoto());
         user.setRoles(new HashSet<>(Collections.singletonList(roleRepository.findOneByName("ROLE_CLIENT"))));
         userRepository.save(user);
         return true;
