@@ -715,7 +715,7 @@
                 }
                 break;
 
-            case 'index':
+            case 'templates.admin.index':
                 var index = event.data.index === 0 ? 0 :
                     event.data.index || $target.index() * _.options.slidesToScroll;
 
@@ -1252,7 +1252,7 @@
 
         _.changeSlide({
             data: {
-                message: 'index',
+                message: 'templates.admin.index',
                 index: parseInt(slide)
             }
         }, dontAnimate);
@@ -1388,7 +1388,7 @@
 
         if (_.options.dots === true) {
             $('li', _.$dots).on('click.slick', {
-                message: 'index'
+                message: 'templates.admin.index'
             }, _.changeSlide);
 
             if (_.options.accessibility === true) {
@@ -1840,7 +1840,7 @@
 
             _.changeSlide({
                 data: {
-                    message: 'index',
+                    message: 'templates.admin.index',
                     index: currentSlide
                 }
             }, false);
