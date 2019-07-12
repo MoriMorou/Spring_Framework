@@ -1,95 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:replace="admin/fragments/header :: head"></head>
+<head th:replace="admin/fragments/head :: head"></head>
 
-<body class="bg-light">
-
-<div th:replace="admin/fragments/header :: header"></div>
-
-<div class="d-flex">
-    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
-
-    <div class="content p-4">
-        <h2 class="mb-4">Blank/Starter</h2>
-
-        <div class="card mb-4">
-            <div class="card-body">
-                Index Admin page
-            </div>
-<!--            <div class="card mb-4">-->
-<!--                <div class="card-header bg-white font-weight-bold">-->
-<!--                    State Colors-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <table class="table table-hover mb-0">-->
-<!--                        <thead>-->
-<!--                        <tr>-->
-<!--                            <th scope="col">State</th>-->
-<!--                            <th scope="col">Preview</th>-->
-<!--                            <th scope="col">Class</th>-->
-<!--                            <th scope="col">Examples</th>-->
-<!--                        </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                        <tr>-->
-<!--                            <td>Primary</td>-->
-<!--                            <td><i class="fa fa-circle text-primary"></i></td>-->
-<!--                            <td><code>*-primary</code></td>-->
-<!--                            <td><code>btn-primary text-primary</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Secondary</td>-->
-<!--                            <td><i class="fa fa-circle text-secondary"></i></td>-->
-<!--                            <td><code>*-secondary</code></td>-->
-<!--                            <td><code>btn-secondary text-secondary</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Success</td>-->
-<!--                            <td><i class="fa fa-circle text-success"></i></td>-->
-<!--                            <td><code>*-success</code></td>-->
-<!--                            <td><code>btn-success text-success</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Danger</td>-->
-<!--                            <td><i class="fa fa-circle text-danger"></i></td>-->
-<!--                            <td><code>*-danger</code></td>-->
-<!--                            <td><code>btn-danger text-danger</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Warning</td>-->
-<!--                            <td><i class="fa fa-circle text-warning"></i></td>-->
-<!--                            <td><code>*-warning</code></td>-->
-<!--                            <td><code>btn-warning text-warning</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Info</td>-->
-<!--                            <td><i class="fa fa-circle text-info"></i></td>-->
-<!--                            <td><code>*-info</code></td>-->
-<!--                            <td><code>btn-info text-info</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Light</td>-->
-<!--                            <td><i class="fa fa-circle text-light"></i></td>-->
-<!--                            <td><code>*-light</code></td>-->
-<!--                            <td><code>btn-light text-light</code></td>-->
-<!--                        </tr>-->
-<!--                        <tr>-->
-<!--                            <td>Dark</td>-->
-<!--                            <td><i class="fa fa-circle text-dark"></i></td>-->
-<!--                            <td><code>*-dark</code></td>-->
-<!--                            <td><code>btn-dark text-dark</code></td>-->
-<!--                        </tr>-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                </div>-->
-<!--            </div>-->
+<body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
         </div>
     </div>
-</div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header th:replace="admin/fragments/header :: topbarHeader"></header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside th:replace="admin/fragments/sidebar :: leftSidebar"></aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer th:replace="admin/fragments/footer :: footer"></footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- customizer Panel -->
+    <!-- ============================================================== -->
+    <aside th:replace="admin/fragments/customizerPanel :: customizerPanel"></aside>
+    <div class="chat-windows"></div>
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script th:src="@{/admin/assets/libs/jquery/dist/jquery.min.js}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script th:src="@{/admin/assets/libs/popper.js/dist/umd/popper.min.js}"></script>
+    <script th:src="@{/admin/assets/libs/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- apps -->
+    <script th:src="@{/admin/dist/js/app.min.js}"></script>
+    <script th:src="@{/admin/dist/js/app.init.js}"></script>
+    <script th:src="@{/admin/dist/js/app-style-switcher.js}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script th:src="@{/admin/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js}"></script>
+    <script th:src="@{/admin/assets/extra-libs/sparkline/sparkline.js}"></script>
+    <!--Wave Effects -->
+    <script th:src="@{/admin/dist/js/waves.js}"></script>
+    <!--Menu sidebar -->
+    <script th:src="@{/admin/dist/js/sidebarmenu.js}"></script>
+    <!--Custom JavaScript -->
+    <script th:src="@{/admin/dist/js/custom.min.js}"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script th:src="@{/admin/assets/libs/chartist/dist/chartist.min.js}"></script>
+    <script th:src="@{/admin/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js}"></script>
+    <!--c3 charts -->
+    <script th:src="@{/admin/assets/extra-libs/c3/d3.min.js}"></script>
+    <script th:src="@{/admin/assets/extra-libs/c3/c3.min.js}"></script>
+    <!--chartjs -->
+    <script th:src="@{/admin/assets/libs/raphael/raphael.min.js}"></script>
+    <script th:src="@{/admin/assets/libs/morris.js/morris.min.js}"></script>
 
-<script th:replace="admin/fragments/footer :: scripts"></script>
-
+    <script th:src="@{/admin/dist/js/pages/dashboards/dashboard1.js}"></script>
 </body>
 </html>

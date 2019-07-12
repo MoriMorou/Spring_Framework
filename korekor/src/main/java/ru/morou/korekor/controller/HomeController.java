@@ -11,13 +11,4 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/home-02")
-    public String homepageTwo(){
-        return "home-02";
-    }
-
-    @GetMapping("/home-03")
-    public String homepageThree(){
-        return "home-03";
-    }
 }

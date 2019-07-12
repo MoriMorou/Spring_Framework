@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 <body>
+<footer th:fragment="footer" class="footer text-center">
+    All Rights Reserved by AdminBite admin. Designed and Developed by
+    <a th:href="@{https://vk.com/morou}">Mori Morou</a>.
+</footer>
 </body>
-
-    <th:block th:fragment="scripts">
-        <script th:src="@{/admin/js/jquery.min.js}"></script>
-        <script th:src="@{/admin/js/bootstrap.bundle.min.js}"></script>
-        <script th:src="@{/admin/js/bootadmin.min.js}"></script>
-    </th:block>
-
 </html>
