@@ -50,13 +50,6 @@ public class AdminProductsController {
         return "admin/product_form";
     }
 
-    @GetMapping("/admin/product/{id}/delete")
-    public String adminDeleteProduct(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("activePage", "Products");
-        productService.deleteById(id);
-        return "redirect:/admin/products";
-    }
-
     @GetMapping("/admin/product/create")
     public String adminCreateProduct(Model model) {
         model.addAttribute("create", true);
@@ -65,6 +58,13 @@ public class AdminProductsController {
         model.addAttribute("categories", categoryRepository.findAll());
         model.addAttribute("brands", brandRepository.findAll());
         return "admin/product_form";
+    }
+
+    @GetMapping("/admin/product/{id}/delete")
+    public String adminDeleteProduct(Model model, @PathVariable("id") Long id) {
+        model.addAttribute("activePage", "Products");
+        productService.deleteById(id);
+        return "redirect:/admin/products";
     }
 
     @PostMapping("/admin/product")
