@@ -171,7 +171,7 @@ DEFAULT CHARACTER SET = utf8;
 
 --changeset MoriMorou:2
 --comment create User
-INSERT INTO `users` VALUES (1,'admin','$2a$10$/z5jkuuGfN9nlynG3jhlS.YxvTjPniXS3eiQdjVp369jOdKHZKoCe','Mori','Morou','mori_morou@mail.ru', NULL, '2019-07-08 23:41:53', '2019-07-08 23:41:53'), (2, 'user', '$2a$10$ab8/UIVfC4cSCQgYWvbUluHKXmPxgLuxKJX7E5vGf3Qf.EaUn8Y6.', 'Dany', 'Morou', 'danyM@mail.ru', NULL, '2019-07-08 23:41:53', '2019-07-08 23:41:53');
+INSERT INTO `users` VALUES (1,'admin','$2a$10$/z5jkuuGfN9nlynG3jhlS.YxvTjPniXS3eiQdjVp369jOdKHZKoCe','Mori','Morou','mori_morou@mail.ru', '/admin/assets/images/users/cat.jpg', '2019-07-08 23:41:53', '2019-07-08 23:41:53'), (2, 'user', '$2a$10$ab8/UIVfC4cSCQgYWvbUluHKXmPxgLuxKJX7E5vGf3Qf.EaUn8Y6.', 'Dany', 'Morou', 'danyM@mail.ru', '/admin/assets/images/users/cat2.jpg', '2019-07-08 23:41:53', '2019-07-08 23:41:53');
 INSERT INTO `roles` VALUES (1,'ROLE_ADMIN'), (2,'ROLE_USER'), (3,'ROLE_SALESMAN');
 INSERT INTO `users_roles` VALUES (1,1), (2,2);
 

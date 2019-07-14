@@ -37,6 +37,99 @@
     <!-- ============================================================== -->
     <div class="page-wrapper">
         <!-- ============================================================== -->
+        <!-- Product -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex no-block align-items-center m-b-10">
+                            <h4 class="card-title">Product Details</h4>
+                        </div>
+                        <!--Form for creation of new users-->
+                        <form class="form-group" th:action="@{/admin/product/create}">
+                            <button type="submit" class="btn btn-primary">Create new</button>
+                        </form>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="zero_config_length">
+                                    <label>Show
+                                        <select name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
+                                            <option value="10">10</option>
+                                            <option value="25">25</option>
+                                            <option value="50">50</option>
+                                            <option value="100">100</option>
+                                        </select> entries
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6">
+                                <div id="zero_config_filter" class="dataTables_filter">
+                                    <label>Search:
+                                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="zero_config"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Table-->
+                        <div class="table-responsive">
+                            <table id="products" class="table product-overview">
+                                <thead>
+                                <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product ID: activate to sort column descending" style="width: 0px;">Product ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Photo: activate to sort column ascending" style="width: 0px;">Photo</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Product name: activate to sort column ascending" style="width: 0px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Categories: activate to sort column ascending" style="width: 0px;">Category</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Brand: activate to sort column ascending" style="width: 0px;">Brand</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 0px;">Price</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 0px;">Status</th>
+                                    <th class="sorting" tabindex="0" aria-controls="zero_config" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 0px;">Actions</th></tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="prod : ${products}">
+                                    <td th:text="${prod.id}"></td>
+                                    <td>
+                                        <div th:replace="/admin/fragments/picture.html :: product (${prod.pictures[0].id})"></div>
+                                    </td>
+                                    <td th:text="${prod.name}"></td>
+                                    <td th:text="${prod.categoriesAsString}"></td>
+                                    <td th:text="${prod.brand}"></td>
+                                    <td th:text="${prod.price}"></td>
+                                    <td></td>
+                                    <td class=" actions">
+                                        <a th:href="@{product/{id}/edit(id=${prod.id})}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit"><i class="fa fa-fw fa-edit"></i></a>
+                                        <a th:href="@{product/{id}/delete(id=${prod.id})}" class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="Delete"><i class="fa fa-fw fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                            <div class="dataTables_info" id="zero_config_info" role="status" aria-live="polite">Showing 1 to 8 of 8 entries
+                            </div>
+                        </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="zero_config_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="zero_config_previous">
+                                            <a href="#" aria-controls="zero_config" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+                                        </li>
+                                        <li class="paginate_button page-item active">
+                                            <a href="#" aria-controls="zero_config" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                                        </li>
+                                        <li class="paginate_button page-item next disabled" id="zero_config_next">
+                                            <a href="#" aria-controls="zero_config" data-dt-idx="2" tabindex="0" class="page-link">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
         <footer th:replace="admin/fragments/footer :: footer"></footer>
