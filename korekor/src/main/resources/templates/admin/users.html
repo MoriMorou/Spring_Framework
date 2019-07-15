@@ -69,7 +69,7 @@
                                     <td th:text="${usr.id}"></td>
                                     <td>
                                         <a href="javscript:void(0)">
-                                            <img th:attr="src=@{${usr.photo}}" alt="user" class="rounded-circle" width="30"></a>
+                                            <img th:src="${usr.pictures[0].id}" alt="user" class="rounded-circle" width="30"></a>
                                     </td>
                                     <td th:text="${usr.userName}"></td>
                                     <td th:text="${usr.firstName}"></td>
