@@ -9,7 +9,7 @@
     <version>1.0.0</version>
     <modules>
         <module>SpringIntegration</module>
-
+        <module>spring-boot-file-upload-download-rest-api-example-mysql-database-storage</module>
     </modules>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
