@@ -11,7 +11,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @EnableAutoConfiguration
 @EnableIntegration
-@IntegrationComponentScan("ru.skubatko.dev.gb.spring2.lesson6.integration")
+@IntegrationComponentScan("ru.morou.springintegrationdemo.integration")
 public class AppConfiguration {
 
     @Bean
