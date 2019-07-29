@@ -114,7 +114,7 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>3.5.5</version>
+                <version>3.7.0</version>
                 <configuration>
                     <propertyFile>${project.build.outputDirectory}/liquibase-maven-plugin.properties</propertyFile>
                     <systemProperties>
@@ -126,7 +126,7 @@
                     <dependency>
                         <groupId>org.liquibase.ext</groupId>
                         <artifactId>liquibase-hibernate5</artifactId>
-                        <version>3.7</version>
+                        <version>3.6</version>
                     </dependency>
                     <dependency>
                         <groupId>org.springframework.boot</groupId>
