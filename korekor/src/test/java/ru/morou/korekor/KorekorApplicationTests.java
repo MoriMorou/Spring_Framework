@@ -29,7 +29,7 @@ public class KorekorApplicationTests {
         ResponseEntity<String[]> entity = restTemplate.getForEntity(String.format("http://localhost:%d/api/users", port), String[].class);
         assertEquals(HttpStatus.OK, entity.getStatusCode());
         assertNotNull(entity.getBody());
-        assertEquals(1, entity.getBody().length);
+        assertEquals(2, entity.getBody().length);
         assertEquals("admin", entity.getBody()[0]);
     }
 }
