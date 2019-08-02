@@ -1,11 +1,16 @@
 package ru.morou.korekor.persist.model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "roles")
 public class Role implements Serializable {
 
@@ -19,9 +24,6 @@ public class Role implements Serializable {
 
     @ManyToMany(mappedBy = "roles")
     private Set<User> users;
-
-    public Role() {
-    }
 
     public Role(String name) {
         this.name = name;
