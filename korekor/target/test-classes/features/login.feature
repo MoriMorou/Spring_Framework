@@ -1,7 +1,7 @@
 Feature: Login
 
   Scenario Outline: Successful Login to the page and logout after
-    Given I open firefox browser
+    Given I open chrome browser
     When I navigate to login.html page
     And I provide username as "<username>" and password as "<password>"
     And I click on login button

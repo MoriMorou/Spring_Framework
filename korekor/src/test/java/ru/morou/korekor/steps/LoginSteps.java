@@ -14,8 +14,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class LoginSteps {
     private WebDriver webDriver = null;
 
-    @Given("^I open firefox browser$")
-    public void iOpenFirefoxBrowser() throws Throwable {
+    @Given("^I open chrome browser$")
+    public void iOpenChromeBrowser() throws Throwable {
         webDriver = DriverInitializer.getDriver();
     }
 
@@ -26,15 +26,15 @@ public class LoginSteps {
 
     @When("^I click on login button$")
     public void iClickOnLoginButton() throws Throwable {
-        WebElement webElement = webDriver.findElement(By.id("btn-login"));
+        WebElement webElement = webDriver.findElement(By.id("login"));
         webElement.click();
     }
 
     @When("^I provide username as \"([^\"]*)\" and password as \"([^\"]*)\"$")
     public void iProvideUsernameAsAndPasswordAs(String username, String password) throws Throwable {
-        WebElement webElement = webDriver.findElement(By.id("inp-username"));
+        WebElement webElement = webDriver.findElement(By.id("username"));
         webElement.sendKeys(username);
-        webElement = webDriver.findElement(By.id("inp-password"));
+        webElement = webDriver.findElement(By.id("password"));
         webElement.sendKeys(password);
     }
 
